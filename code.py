@@ -57,4 +57,7 @@ y_pred = model.predict(X_test)
 # Display evaluation metrics
 st.subheader("Model Evaluation:")
 st.write("Accuracy:", metrics.accuracy_score(y_test, y_pred))
-st.write("Confusion Matrix:\n", metrics.confusion_matrix(y_test, y_pred))
+
+# Convert confusion matrix to DataFrame for better display
+conf_matrix_df = pd.DataFrame(metrics.confusion_matrix(y_test, y_pred), index=['ham', 'spam'], columns=['ham', 'spam'])
+st.write("Confusion Matrix:\n", conf_matrix_df)
